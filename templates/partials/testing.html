@@ -1,0 +1,199 @@
+{% extends 'base.html' %} {% block content %}
+<section id="alaaform" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-info text-white">
+              <h4><i class="fas fa-sign-in-alt"></i> ALAA Form</h4>
+            </div>
+            <div class="card-body">
+              <form action="{% url 'alaaform' %}"
+              method="POST"
+              enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="name_proposer">Name of the Proposer: </label>
+                  <input
+                    type="text"
+                    name="name_proposer"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="details_proposer">Details of the Proposer: </label>
+                    <input
+                      type="text"
+                      name="details_proposer"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="proposer_address">Address: </label>
+                    <input
+                      type="text"
+                      name="proposer_address"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="proposer_mob">Mobile number: </label>
+                    <input
+                      type="text"
+                      name="proposer_mob"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="proposer_email">Email: </label>
+                    <input
+                      type="text"
+                      name="proposer_email"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="name_nominee">Name of the Nominee: </label>
+                    <input
+                      type="text"
+                      name="name_nominee"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="nominee_father_name">Father's Name: </label>
+                    <input
+                      type="text"
+                      name="nominee_father_name"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="dob">Date of Birth(01-01-202)</label>
+                    <input
+                      type="text"
+                      name="dob"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="degree">Degree obtained from NIT Warangal </label>
+                    <input
+                      type="text"
+                      name="degree"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="dept">Department/Specialization</label>
+                    <input
+                      type="text"
+                      name="dept"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="yop">Year of Pass: </label>
+                    <input
+                      type="text"
+                      name="yop"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="rollno">Roll number: </label>
+                    <input
+                      type="text"
+                      name="rollno"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="otherquali">Other qualification acquired, if any </label>
+                    <input
+                      type="text"
+                      name="otherquali"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="ppo">Present Position & Organisation </label>
+                    <input
+                      type="text"
+                      name="ppo"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="nominee_address">Address for Communication</label>
+                    <input
+                      type="text"
+                      name="nominee_address"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="nominee_mob">Mobile number: </label>
+                    <input
+                      type="text"
+                      name="nominee_mob"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="nominee_email">Email:  </label>
+                    <input
+                      type="text"
+                      name="nominee_email"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="myfile">Image File</label>
+                    <input
+                      type="file"
+                      name="myfile"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="profile_pic">File</label>
+                    <input
+                      type="file"
+                      name="profile_pic"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  class="btn btn-secondary btn-block"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+{% endblock %}
