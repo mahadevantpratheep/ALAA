@@ -1,0 +1,407 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Faculty Recruitment Form</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<style type="text/css">
+
+        #need_space{
+            white-space: pre-wrap;
+        }
+		hr{
+			border: none;
+			height: 1px;
+			background-color: black;
+		}
+		@media print {
+			body{
+				font-size: 12px;
+			}
+    		@page { size: portrait; }
+    		.noprint {
+    			display:none !important;
+    		}
+		}
+		.danger {
+				margin-bottom: 15px;
+    			padding: 4px 12px;
+    			background-color: #ffdddd;
+    			border-left: 6px solid #f44336;
+		}
+        @-webkit-keyframes blinker {
+            from {
+                opacity: 1.0;
+            }
+
+            to {
+                opacity: 0.0;
+            }
+        }
+
+        .blink {
+            text-decoration: blink;
+            -webkit-animation-name: blinker;
+            -webkit-animation-duration: 0.6s;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
+        }
+        .main_header{
+            background-color:#00ABB6;
+            margin-top: 0.5%; 
+            color: white; 
+            padding-top: 0px; 
+            padding-bottom: -25%; 
+            height: auto; 
+            margin-bottom: -0.9%
+        }
+		
+
+	</style>
+
+</head>
+
+<body>
+	<script >
+	function thisFunction()
+	{
+		window.print();
+	}
+
+	function check()
+	{
+		var x = document.getElementById("mycheck").checked;
+		if(x===false)
+		{
+			alert("Checkbox is unchecked!");
+			return false;
+		}
+
+
+	}
+</script>
+<center> <img  src="{% static 'img/HINDI2.png' %}" align="center" style="background-color:#ffffff" height="110px" width="100%px" alt="National Institute of Technology Warangal" title="National Institute of Technology Warangal"/></center>
+
+    <div class="row main_header" >
+        <center>
+           <br>
+            <h2 style="display: inline;">Faculty Recruitment Form</h2>
+            <div class="dropdown" style="margin-right: 8%; float: right;">
+                    <button style="background-color: #00ABB6; border: 1px solid;" class="btn dropdown-toggle" type="button" data-toggle="dropdown">Action
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+        <br style="clear: both;">
+        </center>
+        <br>    
+    </div>
+
+<div class="row">
+	<div class="col-sm-10 col-sm-offset-1">
+		<form style="margin-top:3%;">
+		{% csrf_token %}
+		<div class="row">
+			<center>
+			<h4><u>Nomination Form</u></h4>
+			<h4><u>Application ID : {{appid}}</u></h4>
+		</div>
+	   </center>
+		
+        <hr style="clear: both; height: 1px;" />
+        <br>
+            
+
+		<!-- ////////////////// Part1 ///////////////// 
+        {% if profile.profilePic %}
+                <img src=" {{profile.profilePic.url}}" alt="" height="150px" width="140px"><br>
+                {% endif %}
+                {% if profile.profileSign %}
+                <img src="{{profile.profileSign.url}}" alt="" height="40px" width="140px">
+                {% endif %}
+
+		-->
+
+		<div id="appln">
+		<table class="table table-bordered table-condensed">
+			<tr>
+				<td colspan="3">
+					<table class="table table-bordered table-condensed">
+						<tr>
+						  <td><b>Nomination for the Award of</b></td>
+				          <td><b>{{award}}</b></td>
+						</tr>
+						<tr>
+							<td><b>Name</b></td>
+							<td id="need_space"><b>{{name}}</b></td>
+						</tr>
+						<tr>
+				            <td><b>Gender</b></td>
+				            <td colspan="3" id="need_space">{{ppo}}</td>
+			            </tr>
+			            <tr>
+				            <td><b>Year of Pass</b></td>
+				            <td id="need_space">{{yop}}</td>	
+			            </tr>
+			            <tr>
+			            	<td><b>Present Position & Organisation</b></td>
+				            <td id="need_space">{{ppo}}</td>
+			            </tr>
+                        <tr>
+			            	<td><b>Age on 01-01-2021</b></td>
+				            <td id="need_space">{{age}}</td>
+			            </tr>
+					</table>
+				</td>
+				<td align="center" width="250px;">
+				{% if profile_pic %}
+                <img src=" {{profile_pic}}" alt="" height="150px" width="140px"><br>
+                {% endif %}
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<td><b>Father's Name</b></td>
+				<td>{{father_name}}</td>
+				<td><b> Roll Number</b></td>
+				<td>{{rollno}}</td>
+			</tr>
+			<tr>
+				<td><b>Date of Birth</b></td>
+				<td>{{dob}}</td>
+				<td><b>Degree obtained from NITW</b></td>
+				<td id="need_space">{{degree}}</td>
+			</tr>
+			<tr>
+				<td><b>Department</b></td>
+				<td>{{dept}}</td>
+				<td><b>Specialization</b></td>
+				<td>{{specialization}}</td>
+			</tr>
+			<tr>
+				<td><b>Phone Number</b></td>
+				<td id="need_space">{{mob}}</td>
+				<td><b>Email-ID</b></td>
+				<td id="need_space">{{email}}</td>
+			</tr>
+		</table>
+
+		<!-- address part -->
+		<div class="row">
+			<div class="col-xs-6">
+				<b>Correspondence Address </b>
+				<table class="table table-bordered">
+					<tr>
+						<td id="need_space">{{address}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		</div>
+
+		<div id="part1">
+            <div class="row">
+				<div class="col-sm-10">
+					<h5><b>Distinctions at college (Awards/Extra Curricullar/Co-curricular)</b></h5>
+				</div>
+			</div>
+
+			<table class="table table-bordered table-condensed">
+                <tr>
+                    <td id="need_space">{{distinctions}}</td>
+                    <td>{% if distinctions_file %}<a href="http://127.0.0.1:8000/{{distinctions_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                </tr>
+			</table>
+			<hr>
+			<div class="row">
+				<div class="col-sm-10">
+					<h5><b>Particulars of Higher Educational Qualifications</b></h5>
+				</div>
+			</div>
+
+			<table class="table table-bordered table-condensed">
+                <tr>
+                    <td id="need_space">{{higher_eduction}}</td>
+                </tr>
+			</table>
+
+            <div class="row">
+				<div class="col-sm-10">
+					<h5><b>Professional Experiences(Designation,Organisation,Duration)</b></h5>
+				</div>
+			</div>
+
+			<table class="table table-bordered table-condensed">
+                <tr>
+                    <td id="need_space">{{higher_eduction}}</td>
+                </tr>
+			</table>
+
+		</div>
+		<!-- ////////////////// Part2 ///////////////// -->
+		<div id="part2">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<h5 style="font-weight:900;">Professional Contribution:</h5>
+				</div>
+			</div>
+			<br>
+
+			<!-- Teaching Experience Code -->
+			<table class="table table-bordered">
+				<thead>
+				  <tr style="background-color:#e3e3e3;">
+					<th>S.No.</th>
+					<th>Contribution in</th>
+                    <th>Number of works</th>
+                    <th>Proof (combined)</th>
+				  </tr>
+				</thead>
+				<tbody id="teachingExpTbody">
+                    <tr>    
+                     <td>1</td>
+					 <td id="need_space"><b>Number of Papers Published</b></td>
+                     <td id="need_space">{{prof_contri_papers}}</td>
+                     <td>{% if prof_contri_papers_file %}<a href="http://127.0.0.1:8000/{{prof_contri_papers_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                    </tr>
+                    <tr>    
+                        <td>2</td>
+                        <td id="need_space"><b>Number of Patents filed</b></td>
+                        <td id="need_space">{{prof_contri_patents}}</td>
+                        <td>{% if prof_contri_patents_file %}<a href="http://127.0.0.1:8000/{{prof_contri_patents_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                    </tr> 
+                    <tr>    
+                        <td>3</td>
+                        <td id="need_space"><b>Membership in Professional Bodies</b></td>
+                        <td id="need_space">{{prof_contri_membership}}</td>
+                        <td>{% if prof_contri_membership_file %}<a href="http://127.0.0.1:8000/{{prof_contri_membership_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                    </tr> 
+                    <tr>    
+                        <td>4</td>
+                        <td id="need_space"><b>Books Written</b></td>
+                        <td id="need_space">{{prof_contri_books}}</td>
+                        <td>{% if prof_contri_books_file %}<a href="http://127.0.0.1:8000/{{prof_contri_books_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                    </tr> 
+                    <tr>    
+                        <td>5</td>
+                        <td id="need_space"><b>Other Contribution</b></td>
+                        <td id="need_space">{{prof_contri_others}}</td>
+                        <td>{% if prof_contri_others_file %}<a href="http://127.0.0.1:8000/{{prof_contri_others_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                    </tr> 
+				</tbody>
+			</table>
+			<br>
+            <div class="row">
+				<div class="col-sm-10">
+					<h5><b>Professional Honors, Awards, certificates of Achievement, Commendations:</b></h5>
+				</div>
+			</div>
+
+			<table class="table table-bordered table-condensed">
+                <tr>
+                    <td id="need_space">{{prof_hon_award}}</td>
+                    <td id="need_space">{% if prof_hon_award_file %}<a href="http://127.0.0.1:8000/{{prof_hon_award_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                </tr>
+			</table>
+		</div>
+        <div class="row">
+            <div class="col-sm-10">
+                <h5><b>Nominee's accomplishments for consideration to the award, for which he/she is nominated</b></h5>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <td id="need_space">{{nom_accom_con}}</td>
+                <td id="need_space">{% if nom_accom_con_file %}<a href="http://127.0.0.1:8000/{{nom_accom_con_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-sm-10">
+                <h5><b>Letter of Support wriitten by someone other than the nominator</b></h5>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <td><b>Details</b></td>
+                <td id="need_space">{{ls1_details}}</td>
+                <td id="need_space">{% if ls1_file %}<a href="http://127.0.0.1:8000/{{ls1_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+            </tr>
+        </table>
+
+        <div class="row">
+            <div class="col-sm-10">
+                <h5><b>Second Letter of Support wriitten by someone other than the nominator</b></h5>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <td><b>Details</b></td>
+                <td id="need_space">{{ls2_details}}</td>
+                <td id="need_space">{% if ls2_file %}<a href="http://127.0.0.1:8000/{{ls2_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+            </tr>
+        </table>
+
+        <div class="row">
+            <div class="col-sm-10">
+                <h5><b>Resume</b></h5>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <td id="need_space">{% if resume %}<a href="http://127.0.0.1:8000/{{resume}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+            </tr>
+        </table>
+
+        <div class="row">
+            <div class="col-sm-10">
+                <h5><b>Additional Supporting Material (Press releases, awards, honors, etc.) maybe be included as well</b></h5>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <td id="need_space">{{additional_materials}}</td>
+                <td id="need_space">{% if add_file %}<a href="http://127.0.0.1:8000/{{add_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+            </tr>
+        </table>
+    
+        <br><br><br><br>
+
+
+
+
+
+    </div>
+    
+</div>
+
+<div class="copyright">
+    <div style="text-align: center">Copyright &copy; NIT Warangal</div>
+    <div style="text-align:center">Designed and Developed by WSDC</div>
+</div>
+</body>
+<style type="text/css">
+    .copyright {
+        background-color: #003A6A;
+        color: white;
+    }
+
+</style>
+
+</html>

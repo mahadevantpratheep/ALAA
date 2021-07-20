@@ -5,5 +5,8 @@ from . import views
 urlpatterns = [
     path('',views.alaaform, name='alaaform'),
     path('login',views.login, name='login'),
-    path('register',views.register, name='register')
+    path('logout',views.logout, name='logout'),
+    path('register',views.register, name='register'),
+    path('print_pg',views.print_pg, name='print_pg'),
+    path('fac_user',views.fac_user, name='fac_user')
 ]

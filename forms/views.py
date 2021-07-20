@@ -1,38 +1,135 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required,user_passes_test
+from django.contrib.auth import authenticate,login,logout
 from django.db.models import Max
-from .models import ALAA_Form, IdCount, Proposer
+from django.contrib.auth.models import User
+from .models import ALAA_Form, IdCount, Proposer, Award_Form
 import datetime, random, string
 from hashlib import sha256
+import jwt, mimetypes
 # Create your views here.
+jwt_key = "ajsolasjfprapaphsgourhgo"
 
 def alaaform(request):
-    if request.method == 'POST' and request.FILES['profile_pic']:
-        alaaform = ALAA_Form()
-        alaaform.name_proposer = request.POST['name_proposer']
-        alaaform.details_proposer = request.POST['details_proposer']
-        alaaform.proposer_address = request.POST['proposer_address']
-        alaaform.proposer_mob = request.POST['proposer_mob']
-        alaaform.proposer_email = request.POST['proposer_email']
-        alaaform.name_nominee = request.POST['name_nominee']
-        alaaform.nominee_father_name = request.POST['nominee_father_name']
-        alaaform.dob = request.POST['dob']
-        alaaform.degree = request.POST['degree']
-        alaaform.dept = request.POST['dept']
-        alaaform.yop = request.POST['yop']
-        alaaform.rollno = request.POST['rollno']
-        alaaform.otherquali = request.POST['otherquali']
-        alaaform.ppo = request.POST['ppo']
-        alaaform.nominee_address =  request.POST['nominee_address']
-        alaaform.nominee_mob = request.POST['nominee_mob']
-        alaaform.nomionee_email =  request.POST['nominee_email']
-        alaaform.profile_pic = request.FILES['profile_pic']
-
-        alaaform.save()
-
-        return redirect('alaaform')
+    if request.method == 'POST':
+        print("Post aane myre")
+        token = request.COOKIES.get("jwt")
+        jt = jwt.decode(token, jwt_key, algorithms="HS256")
+        app_id = jt['app_id']
+        user = Proposer.objects.get(app_id=app_id)    
+        print(request)
+        nominee = Award_Form()
+        nominee.app_id = app_id
+        nominee.award = user.award
+        nominee.name = request.POST['name']
+        #nominee.gender = request.POST['gender']
+        try:
+            nominee.profile_pic = request.FILES['profile_pic']
+        except:
+            pass
+        nominee.father_name = request.POST['father_name']
+        nominee.rollno = request.POST['rollno']
+        nominee.dob = request.POST['dob']
+        nominee.age = request.POST['age']
+        nominee.degree = request.POST['degree']
+        nominee.dept = request.POST['dept']
+        nominee.yop = request.POST['yop']
+        nominee.specialization = request.POST['specialization']
+        nominee.mob = request.POST['mob']
+        nominee.email = request.POST['email']
+        nominee.address = request.POST['address']
+        nominee.ppo = request.POST['ppo']
+        nominee.distinctions = request.POST['distinctions']
+        try:
+            nominee.distinctions_file = request.FILES['distinctions_file']
+        except:
+            pass
+        nominee.higher_eduction = request.POST['higher_eduction']
+        nominee.professional_exp = request.POST['professional_exp']
+        nominee.prof_contri_papers = request.POST['prof_contri_papers']
+        try:
+            nominee.prof_contri_papers_file = request.FILES['prof_contri_papers_file']
+        except:
+            pass
+        nominee.prof_contri_patents = request.POST['prof_contri_patents']
+        try:
+            nominee.prof_contri_patents_file = request.FILES['prof_contri_patents_file']
+        except:
+            pass
+        nominee.prof_contri_membership = request.POST['prof_contri_membership']
+        try:
+            nominee.prof_contri_membership_file = request.FILES['prof_contri_membership_file']
+        except:
+            pass
+        nominee.prof_contri_books = request.POST['prof_contri_books']
+        try:
+            nominee.prof_contri_books_file = request.FILES['prof_contri_books_file']
+        except:
+            pass
+        nominee.prof_contri_others = request.POST['prof_contri_others']
+        try:
+            nominee.prof_contri_others_file = request.FILES['prof_contri_others_file']
+        except:
+            pass
+        nominee.prof_hon_award = request.POST['prof_hon_award']
+        try:
+            nominee.prof_hon_award_file = request.FILES['prof_hon_award_file']
+        except:
+            pass
+        nominee.nom_accom_con = request.POST['nom_accom_con']
+        try:
+            nominee.nom_accom_con_file = request.FILES['nom_accom_con_file']
+        except:
+            pass
+        nominee.ls1_details = request.POST['ls1_details']
+        try:
+            nominee.ls1_file = request.FILES['ls1_file']
+        except:
+            pass
+        nominee.ls2_details = request.POST['ls2_details']
+        try:
+             nominee.ls2_file = request.FILES['ls2_file']
+        except:
+            pass
+        try:
+            nominee.resume = request.FILES['resume']
+        except:
+            pass
+        nominee.additional_materials = request.POST['additional_materials']
+        try:
+            nominee.resume = request.FILES['resume']
+        except:
+            pass
+        try:
+            nominee.submitted = request.POST['submitted']
+            user.submitted = request.POST['submitted']
+            user.save()
+        except:
+            pass
+        if Award_Form.objects.filter(app_id=app_id).exists():
+            temp = Award_Form.objects.get(app_id=app_id)
+            temp.delete()
+        nominee.save()
+        return redirect('print_pg')
     else:
-        return render(request,'forms/alaaforms.html')
+        print('Reacjed jere')        
+        try:
+            token = request.COOKIES.get("jwt")
+            jt = jwt.decode(token, jwt_key, algorithms="HS256")
+        except:
+            return redirect("login")
+        app_id = jt['app_id']         
+        user = Proposer.objects.get(app_id=app_id)
+        data = {}
+        award = user.award
+        data['appid'] = app_id
+        data['award'] = award
+        response = render(request, 'forms/alaaforms.html', data)
+        encoded = jwt.encode({"app_id": app_id}, jwt_key, algorithm="HS256")
+        response.set_cookie(key='jwt', value=encoded)
+        return response
+
 
 
 def login (request):
@@ -41,8 +138,25 @@ def login (request):
         password = request.POST['password']
 
         if Proposer.objects.filter(app_id=username).exists():
-            if Proposer.objects.filter(password=password).exists():
-                return render(request,'forms/alaaforms.html')
+            print("hello")
+            user = Proposer.objects.get(app_id=username)
+            if user.password == password:
+                data = {}
+                award = user.award
+                data['appid'] = username
+                data['award'] = award
+                if user.submitted == True:
+                    response = redirect('print_pg')
+                else:
+                    response = render(request, 'forms/alaaforms.html', data)
+                encoded = jwt.encode({"app_id": username}, jwt_key, algorithm="HS256")
+                response.set_cookie(key='jwt', value=encoded)
+                return response
+            else:
+                return render(request,'forms/login.html',{'error': 'Wrong username or password'})
+
+        else:
+            return render(request,'forms/login.html',{'error': 'Wrong username or password'})
 
     else :
         return render(request,'forms/login.html')
@@ -55,7 +169,7 @@ def login (request):
 def register (request):
     if request.method == 'POST':
         #App ID generating
-        award_dict = {"award 1":1 , "award 2": 2, "award 3":3, "award 4":4, "award 5":5, "award 6":6, "award 7":7}
+        award_dict = {"For Senior Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)":1 , "For Senior Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)": 2, "For Senior Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)":3, "For Young Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)":4, "For Young Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)":5, "For Young Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)":6, "Alumnus Lifetime Achievement Award":7}
         award = request.POST['award']
         award_id = award_dict[award]
         year = str(datetime.datetime.now().year)
@@ -100,6 +214,92 @@ def register (request):
 
         proposer.save()
 
+      #  user = User()
+       # user.username = app_id
+        #user.password = password
+      #  user.email = request.POST['email']
+      #  user.save()
+
         return redirect('login')
     else:
         return render(request,'forms/register.html')
+
+
+def print_pg(request):
+    if request.method == 'GET':
+        try:
+            token = request.COOKIES.get("jwt")
+            jt = jwt.decode(token, jwt_key, algorithms="HS256")
+        except:
+            return redirect("login")
+        app_id = jt['app_id']         
+        user = Award_Form.objects.get(app_id=app_id)
+        data = {}
+        data['appid'] = user.app_id
+        data['award'] = user.award
+        data['name'] = user.name
+        data['gender'] = user.gender
+        data['profile_pic'] = user.profile_pic
+        data['father_name'] = user.father_name
+        data['rollno'] = user.rollno
+        data['dob'] = user.dob
+        data['age'] = user.age
+        data['degree'] = user.degree
+        data['dept'] = user.dept
+        data['yop'] = user.yop
+        data['specialization'] = user.specialization
+        data['mob'] = user.mob
+        data['email'] = user.email
+        data['address'] = user.address
+        data['ppo'] = user.ppo
+        data['distinctions'] = user.distinctions
+        data['distinctions_file'] = user.distinctions_file
+        data['higher_eduction'] = user.higher_eduction
+        data['professional_exp'] = user.professional_exp
+        data['prof_contri_papers'] = user.prof_contri_papers
+        data['prof_contri_papers_file'] = user.prof_contri_papers_file
+        data['prof_contri_patents'] = user.prof_contri_patents
+        data['prof_contri_patents_file'] = user.prof_contri_patents_file
+        data['prof_contri_membership'] = user.prof_contri_membership
+        data['prof_contri_membership_file'] = user.prof_contri_membership_file
+        data['prof_contri_books'] = user.prof_contri_books
+        data['prof_contri_books_file'] = user.prof_contri_books_file
+        data['prof_contri_others'] = user.prof_contri_others
+        data['prof_contri_others_file'] = user.prof_contri_others_file
+        data['prof_hon_award'] = user.prof_hon_award
+        data['prof_hon_award_file'] = user.prof_hon_award_file
+        data['nom_accom_con'] = user.nom_accom_con
+        data['nom_accom_con_file'] = user.nom_accom_con_file
+        data['ls1_details'] = user.ls1_details
+        data['ls1_file'] = user.ls1_file
+        data['ls2_details'] = user.ls2_details
+        data['ls2_file'] = user.ls2_file
+        data['resume'] = user.resume
+        data['additional_materials'] = user.additional_materials
+        data['add_file'] = user.add_file
+
+    return render(request,'forms/print_page.html',data)
+
+def download_file(request):
+    try:
+        token = request.COOKIES.get("jwt")
+        jt = jwt.decode(token, jwt_key, algorithms="HS256")
+    except:
+        return redirect("login")
+    app_id = jt['app_id']         
+    file_path = "Nomineefiles/{}/{}".format(app_id, request.filename)
+
+    fl = open(file_path, "r")
+    mime_type, _ = mimetypes.guess_type(fl_path)
+    response = HttpResponse(fl, content_type=mime_type)
+    response['Content-Disposition'] = "attachment; filename=%s" % filename
+    
+    return response
+
+def logout(request):
+    response = redirect('login')
+    response.delete_cookie('jwt')
+    return response
+
+def fac_user(request):
+    return render(request,'forms/fac_user.html')

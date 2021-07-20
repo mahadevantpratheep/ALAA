@@ -97,25 +97,25 @@ input[type=number]::-webkit-outer-spin-button {
                         <input for="specialization" class="form-control" name="specialization" required>
                     </div>
                     <div class="form-group">
-                      <label for="award">Applying for the POST of</label>
-                      <select class="form-control" name="award" id="postDropdown">
+                      <label for="award">Nomination made for:</label>
+                      <select class="form-control" name="award" id="postDropdown" required>
                         <option disabled selected value> -- select an option -- </option>
-                        <option value="award 1">Award 1</option>
-                        <option value="award 2">Award 2</option>
-                        <option value="award 3">Award 3</option>
-                        <option value="award 4">Award 4</option>
-                        <option value="award 5">Award 5</option>
-                        <option value="award 6">Award 6</option>
-                        <option value="award 7">Award 7</option>
+                        <option value="For Senior Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)">For Senior Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)</option>
+                        <option value="For Senior Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)">For Senior Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)</option>
+                        <option value="For Senior Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)">For Senior Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)</option>
+                        <option value="For Young Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)">For Young Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)</option>
+                        <option value="For Young Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)">For Young Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)</option>
+                        <option value="For Young Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)">For Young Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)</option>
+                        <option value="Alumnus Lifetime Achievement Award">Alumnus Lifetime Achievement Award</option>
                       </select>
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input for="address" class="form-control" name="address" type="text" required>
+                        <textarea for="address" class="form-control" name="address" rows="4" type="text" required></textarea>
                     </div>
                     <center><button type="submit" class="btn btn-success btn-md">Submit</button></center>
                 </form>
-                    <center><a href="/staffregister/">Or login</a></center>
+                    <center><a href="{% url 'login' %}">Or login</a></center>
             </div>
         </div>
     </div>
