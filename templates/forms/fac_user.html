@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Faculty Recruitment Form</title>
+	<title>Nomination Forms</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -91,7 +91,7 @@
     <div class="row main_header" >
         <center>
            <br>
-            <h2 style="display: inline;">Faculty Recruitment Form</h2>
+            <h2 style="display: inline;">Nomination Forms</h2>
             <div class="dropdown" style="margin-right: 8%; float: right;">
                     <button style="background-color: #00ABB6; border: 1px solid;" class="btn dropdown-toggle" type="button" data-toggle="dropdown">Action
                         <span class="caret"></span></button>
@@ -118,43 +118,29 @@
             <thead>
               <tr style="background-color:#e3e3e3;">
                 <th>S.No.</th>
-                <th>Contribution in</th>
-                <th>Number of works</th>
-                <th>Proof (combined)</th>
+                <th>Application ID</th>
+                <th>Proposer Name</th>
+                <th>Award</th>
+                <th>Nominee</th>
+                <th>Nomination Form</th>
               </tr>
             </thead>
+            {% for d in det %}
             <tbody id="teachingExpTbody">
                 <tr>    
                  <td>1</td>
-                 <td id="need_space"><b>Number of Papers Published</b></td>
-                 <td id="need_space">{{prof_contri_papers}}</td>
-                 <td></td>  
+                 <td><b>{{d.app_id}}</b></td>
+                 <td><b>{{d.prop_name}}</b></td>
+                 <td><b>{{d.award}}</b></td>
+                 <td><b>{{d.nom_name}}</b></td>
+                 <form action="{% url 'print_pg' %}" method="POST">
+                    {% csrf_token %}
+                     <input type="hidden" name="app_id" value={{d.app_id}}>
+                 <td><input type="submit"><button type="button" class="btn btn-success active">File</button></a></td>  
+                 </form>
                 </tr>
-                <tr>    
-                    <td>2</td>
-                    <td id="need_space"><b>Number of Patents filed</b></td>
-                    <td id="need_space">{{prof_contri_patents}}</td>
-                    <td></td>  
-                </tr> 
-                <tr>    
-                    <td>3</td>
-                    <td id="need_space"><b>Membership in Professional Bodies</b></td>
-                    <td id="need_space">{{prof_contri_membership}}</td>
-                    <td></td>  
-                </tr> 
-                <tr>    
-                    <td>4</td>
-                    <td id="need_space"><b>Books Written</b></td>
-                    <td id="need_space">{{prof_contri_books}}</td>
-                    <td></td>  
-                </tr> 
-                <tr>    
-                    <td>5</td>
-                    <td id="need_space"><b>Other Contribution</b></td>
-                    <td id="need_space">{{prof_contri_others}}</td>
-                    <td></td>  
-                </tr> 
             </tbody>
+            {% endfor %}
         </table>
     </div>
 

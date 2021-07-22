@@ -142,14 +142,14 @@
 
                             <div class="col-sm-3">
                                 <center>
-                                    {% if profile.profilePic %}
-                                    <img src="{{profile.profilePic.url}}" class="img-rounded" style="height:150px; max-width:90%;">
+                                    {% if profile_pic %}
+                                        <img src="{{profile_pic}}" class="img-rounded" style="height:150px; max-width:90%;">
                                     {% else %}
                                       <img src="{% static 'img/default_profile.jpg' %}" class="img-rounded" style="height:150px; max-width:90%;">
                                     {% endif %}
                                     <br><br><br>
                                     <div class="form-group">
-                                      <input for="profile_pic" class="custom-file-input" type="file" name="profile_pic" value="{{generalData.pob}}">
+                                      <input for="profile_pic" class="custom-file-input" type="file" name="profile_pic" value="http://127.0.0.1:8000/{{profile_pic}}">
                                   </div>
                                     <br><br>
                                 </center>
@@ -162,13 +162,13 @@
                             <div class="col-sm-3"> <b>Father's Name</b> </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input for="father_name" class="form-control" type="text" name="father_name" value="{{generalData.father_name}}">
+                                    <input for="father_name" class="form-control" type="text" name="father_name" value="{{father_name}}">
                                 </div>
                             </div>
                             <div class="col-sm-2"> <b>Roll Number</b> </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input for="rollno" class="form-control" type="text" name="rollno" value="{{generalData.father_occ}}">
+                                    <input for="rollno" class="form-control" type="text" name="rollno" value="{{rollno}}">
                                 </div>
                             </div>
                         </div>
@@ -177,13 +177,13 @@
                             <div class="col-sm-3"> <b>Date of Birth</b> </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input for="dob" class="form-control" type="date" name="dob" value="{{generalData.mother_name}}">
+                                    <input for="dob" class="form-control" type="date" name="dob" value="{{dob}}">
                                 </div>
                             </div>
                             <div class="col-sm-2"> <b>Age on 01-01-2021</b> </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input for="age" class="form-control" type="text" name="age" value="{{generalData.mother_occ}}">
+                                    <input for="age" class="form-control" type="text" name="age" value="{{age}}">
                                 </div>
                             </div>
                         </div>
@@ -192,13 +192,13 @@
                             <div class="col-sm-3"> <b>Degree obtained from NITW</b> </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input for="degree" class="form-control" type="text" name="degree" value="{{generalData.nation}}">
+                                    <input for="degree" class="form-control" type="text" name="degree" value="{{degree}}">
                                 </div>
                             </div>
                             <div class="col-sm-2"> <b>Department</b> </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input for="dept" class="form-control" type="text" name="dept" value="{{generalData.pob}}">
+                                    <input for="dept" class="form-control" type="text" name="dept" value="{{dept}}">
                                 </div>
                             </div>
                         </div>
@@ -207,14 +207,14 @@
                             <div class="col-sm-3"> <b>Year of Pass</b> </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input for="yop" class="form-control" type="text" name="yop" value="{{generalData.dob}}">
+                                    <input for="yop" class="form-control" type="text" name="yop" value="{{yop}}">
                                 </div>
                             </div>
 
                       <div class="col-sm-2"> <b>Specialization</b> </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input for="specialization" class="form-control" type="text" name="specialization" value="{{generalData.pob}}">
+                                    <input for="specialization" class="form-control" type="text" name="specialization" value="{{specialization}}">
                                 </div>
                             </div>
                         </div>
@@ -222,14 +222,14 @@
                           <div class="col-sm-3"> <b>Phone Number</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <input for="mob" class="form-control" type="text" name="mob" value="{{generalData.dob}}">
+                                  <input for="mob" class="form-control" type="text" name="mob" value="{{mob}}">
                               </div>
                           </div>
 
                     <div class="col-sm-2"> <b>Email</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
-                                  <input for="email" class="form-control" type="email" name="email" value="{{generalData.pob}}">
+                                  <input for="email" class="form-control" type="email" name="email" value="{{email}}">
                               </div>
                           </div>
                    
@@ -238,14 +238,14 @@
                         <div class="col-sm-3"> <b>Address</b> </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <textarea for="address" class="form-control" type="text" name="address" rows="4" value="{{generalData.dob}}"></textarea>
+                                <textarea for="address" class="form-control" type="text" name="address" rows="4">{{address}}</textarea>
                             </div>
                         </div>
 
                   <div class="col-sm-2"> <b>Present Position & Organisation</b> </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <input for="ppo" class="form-control" type="text" name="ppo" value="{{generalData.pob}}">
+                                <input for="ppo" class="form-control" type="text" name="ppo" value="{{ppo}}">
                             </div>
                         </div>
                       </div>
@@ -255,14 +255,14 @@
                           <div class="col-sm-3"> <b>Distinctions at college (Awards/Extra Curricullar/Co-curricular)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="destinctions" class="form-control" type="text" name="distinctions" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="destinctions" class="form-control" type="text" name="distinctions" rows="4">{{distinctions}}</textarea>
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof</b> </div>
+                    <div class="col-sm-2"> <b>Proof &ensp;{% if distinctions_file %}Currently: <a href="http://127.0.0.1:8000/{{distinctions_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b></div>
                           <div class="col-sm-2">
                               <div class="form-group">
-                                  <input for="distinctions_file" class="form-control" type="file" name="distinctions_file" value="{{generalData.pob}}">
+                                  <input for="distinctions_file" class="form-control" type="file" name="distinctions_file" value="{{distinctions_file}}">
                               </div>
                           </div>
                         </div>
@@ -274,7 +274,7 @@
                           <div class="col-sm-3"> <b>List Details of Higher Education (Degree, Specialization, Year of Pass, University)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="higher_eduction" class="form-control" type="text" name="higher_eduction" rows="4" value="{{generalData.nation}}"></textarea>
+                                  <textarea for="higher_eduction" class="form-control" type="text" name="higher_eduction" rows="4">{{higher_eduction}}</textarea>
                               </div>
                           </div>
                       </div>
@@ -283,7 +283,7 @@
                           <div class="col-sm-3"> <b>Professional Experiences(Designation,Organisation,Duration)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="professional_exp" class="form-control" type="text" name="professional_exp" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="professional_exp" class="form-control" type="text" name="professional_exp" rows="4">{{professional_exp}}</textarea>
                               </div>
                           </div>
                         </div>
@@ -295,10 +295,10 @@
                           <div class="col-sm-3"> <b>Number of Papers Published</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <input for="prof_contri_papers" class="form-control" type="text" name="prof_contri_papers" value="{{generalData.nation}}">
+                                  <input for="prof_contri_papers" class="form-control" type="text" name="prof_contri_papers" value="{{prof_contri_papers}}">
                               </div>
                           </div>
-                          <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+                          <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_papers_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_papers_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_contri_papers_file" class="form-control" type="file" name="prof_contri_papers_file" value="{{generalData.pob}}">
@@ -310,11 +310,11 @@
                           <div class="col-sm-3"> <b>Number of Patents filed</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <input for="prof_contri_patents" class="form-control" type="text" name="prof_contri_patents" value="{{generalData.dob}}">
+                                  <input for="prof_contri_patents" class="form-control" type="text" name="prof_contri_patents" value="{{prof_contri_patents}}">
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_patents_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_patents_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_contri_patents_file" class="form-control" type="file" name="prof_contri_patents_file" value="{{generalData.pob}}">
@@ -325,11 +325,11 @@
                         <div class="col-sm-3"> <b>Membership in Professional Bodies</b> </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input for="prof_contri_membership" class="form-control" type="text" name="prof_contri_membership" value="{{generalData.dob}}">
+                                <input for="prof_contri_membership" class="form-control" type="text" name="prof_contri_membership" value="{{prof_contri_membership}}">
                             </div>
                         </div>
 
-                  <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+                  <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_membership_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_membership_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <input for="prof_contri_membership_file" class="form-control" type="file" name="prof_contri_membership_file" value="{{generalData.pob}}">
@@ -340,11 +340,11 @@
                       <div class="col-sm-3"> <b>Books Written</b> </div>
                       <div class="col-sm-3">
                           <div class="form-group">
-                              <input for="prof_contri_books" class="form-control" type="text" name="prof_contri_books" value="{{generalData.dob}}">
+                              <input for="prof_contri_books" class="form-control" type="text" name="prof_contri_books" value="{{prof_contri_books}}">
                           </div>
                       </div>
 
-                <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+                <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_books_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_books_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                       <div class="col-sm-2">
                           <div class="form-group">
                               <input for="prof_contri_books_file" class="form-control" type="file" name="prof_contri_books_file" value="{{generalData.pob}}">
@@ -355,11 +355,11 @@
                     <div class="col-sm-3"> <b>Other Contribution</b> </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <textarea for="prof_contri_others" class="form-control" type="text" rows="2" name="prof_contri_others" value="{{generalData.dob}}"></textarea>
+                            <textarea for="prof_contri_others" class="form-control" type="text" rows="2" name="prof_contri_others" value="{{prof_contri_others}}"></textarea>
                         </div>
                     </div>
 
-              <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+              <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_others_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_others_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <input for="prof_contri_others_file" class="form-control" type="file" name="prof_contri_others_file" value="{{generalData.pob}}">
@@ -371,11 +371,11 @@
                           <div class="col-sm-3"> <b>Professional Honors, Awards, certificates of Achievement, Commendations:</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="prof_hon_award" class="form-control" type="text" name="prof_hon_award" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="prof_hon_award" class="form-control" type="text" name="prof_hon_award" rows="4">{{prof_hon_award}}</textarea>
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_hon_award_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_hon_award_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_hon_award_file" class="form-control" type="file" name="prof_hon_award_file" value="{{generalData.pob}}">
@@ -387,11 +387,11 @@
                           <div class="col-sm-3"> <b>List the nominee's accomplishments for consideration to the award, for which he/she is nominated</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="nom_accom_con" class="form-control" type="text" name="nom_accom_con" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="nom_accom_con" class="form-control" type="text" name="nom_accom_con" rows="4">{{nom_accom_con}}</textarea>
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined&ensp; {% if nom_accom_con_file %} Currently: <a href="http://127.0.0.1:8000/{{nom_accom_con_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %})</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="nom_accom_con_file" class="form-control" type="file" name="nom_accom_con_file" value="{{generalData.pob}}">
@@ -407,11 +407,11 @@
                           <div class="col-sm-3"> <b>Details of Recommender(Name,Designation,Organisation,Phone Number,Email-ID)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="ls1_details" class="form-control" type="text" name="ls1_details" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="ls1_details" class="form-control" type="text" name="ls1_details" rows="4">{{ls1_details}}</textarea>
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Letter of Support (Upload)</b> </div>
+                    <div class="col-sm-2"> <b>Letter of Support (Upload)&ensp; {% if ls1_file %} Currently: <a href="http://127.0.0.1:8000/{{ls1_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="ls1_file" class="form-control" type="file" name="ls1_file" value="{{generalData.pob}}">
@@ -428,11 +428,11 @@
                           <div class="col-sm-3"> <b>Details of Recommender(Name,Designation,Organisation,Phone Number,Email-ID)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="ls2_details" class="form-control" type="text" name="ls2_details" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="ls2_details" class="form-control" type="text" name="ls2_details" rows="4">{{ls2_details}}</textarea>
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Letter of Support (Upload)</b> </div>
+                    <div class="col-sm-2"> <b>Letter of Support (Upload)&ensp; {% if ls2_file %} Currently: <a href="http://127.0.0.1:8000/{{ls2_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="ls2_file" class="form-control" type="file" name="ls2_file" value="{{generalData.pob}}">
@@ -442,7 +442,7 @@
                         <br>
                         <br>
                         <div class="row">
-                          <div class="col-sm-2"> <b>Enclose resume with the nomination form</b> </div>
+                          <div class="col-sm-2"> <b>Enclose resume with the nomination form &ensp; {% if resume %} Currently: <a href="http://127.0.0.1:8000/{{resume}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="resume" class="form-control" type="file" name="resume" value="{{generalData.pob}}">
@@ -455,11 +455,11 @@
                           <div class="col-sm-3"> <b>Additional Supporting Material (Press releases, awards, honors, etc.) maybe be included as well</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
-                                  <textarea for="additional_materials" class="form-control" type="text" name="additional_materials" rows="4" value="{{generalData.dob}}"></textarea>
+                                  <textarea for="additional_materials" class="form-control" type="text" name="additional_materials" rows="4">{{additional_materials}}</textarea>
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined)</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if add_file %} Currently: <a href="http://127.0.0.1:8000/{{add_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="add_file" class="form-control" type="file" name="add_file" value="{{generalData.pob}}">
@@ -478,7 +478,7 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                          <center><button type="submit" class="btn btn-success btn-md" >Submit</button></center>
+                          <center><button type="submit" class="btn btn-success btn-md" >Save</button></center>
                         </div>
                 <!-- <center><a href="/academic"><button type="button" style="float:right;" id="nxt" class="btn btn-info">Next</button></a></center> -->
                         

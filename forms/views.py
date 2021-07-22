@@ -13,13 +13,14 @@ jwt_key = "ajsolasjfprapaphsgourhgo"
 
 def alaaform(request):
     if request.method == 'POST':
-        print("Post aane myre")
         token = request.COOKIES.get("jwt")
         jt = jwt.decode(token, jwt_key, algorithms="HS256")
         app_id = jt['app_id']
-        user = Proposer.objects.get(app_id=app_id)    
-        print(request)
-        nominee = Award_Form()
+        user = Proposer.objects.get(app_id=app_id)   
+        if Award_Form.objects.filter(app_id=app_id).exists():
+            nominee = Award_Form.objects.get(app_id=app_id)
+        else:     
+            nominee = Award_Form()
         nominee.app_id = app_id
         nominee.award = user.award
         nominee.name = request.POST['name']
@@ -107,24 +108,68 @@ def alaaform(request):
             user.save()
         except:
             pass
-        if Award_Form.objects.filter(app_id=app_id).exists():
-            temp = Award_Form.objects.get(app_id=app_id)
-            temp.delete()
+        #if Award_Form.objects.filter(app_id=app_id).exists():
         nominee.save()
         return redirect('print_pg')
-    else:
-        print('Reacjed jere')        
+    else:    
         try:
             token = request.COOKIES.get("jwt")
             jt = jwt.decode(token, jwt_key, algorithms="HS256")
         except:
             return redirect("login")
         app_id = jt['app_id']         
-        user = Proposer.objects.get(app_id=app_id)
-        data = {}
-        award = user.award
-        data['appid'] = app_id
-        data['award'] = award
+        if Award_Form.objects.filter(app_id=app_id).exists():
+            user = Award_Form.objects.get(app_id=app_id)
+            data = {}
+            data['appid'] = user.app_id
+            data['award'] = user.award
+            data['name'] = user.name
+            data['gender'] = user.gender
+            data['profile_pic'] = user.profile_pic
+            data['father_name'] = user.father_name
+            data['rollno'] = user.rollno
+            data['dob'] = user.dob
+            data['age'] = user.age
+            data['degree'] = user.degree
+            data['dept'] = user.dept
+            data['yop'] = user.yop
+            data['specialization'] = user.specialization
+            data['mob'] = user.mob
+            data['email'] = user.email
+            data['address'] = user.address
+            data['ppo'] = user.ppo
+            data['distinctions'] = user.distinctions
+            data['distinctions_file'] = user.distinctions_file
+            data['higher_eduction'] = user.higher_eduction
+            data['professional_exp'] = user.professional_exp
+            data['prof_contri_papers'] = user.prof_contri_papers
+            data['prof_contri_papers_file'] = user.prof_contri_papers_file
+            data['prof_contri_patents'] = user.prof_contri_patents
+            data['prof_contri_patents_file'] = user.prof_contri_patents_file
+            data['prof_contri_membership'] = user.prof_contri_membership
+            data['prof_contri_membership_file'] = user.prof_contri_membership_file
+            data['prof_contri_books'] = user.prof_contri_books
+            data['prof_contri_books_file'] = user.prof_contri_books_file
+            data['prof_contri_others'] = user.prof_contri_others
+            data['prof_contri_others_file'] = user.prof_contri_others_file
+            data['prof_hon_award'] = user.prof_hon_award
+            data['prof_hon_award_file'] = user.prof_hon_award_file
+            data['nom_accom_con'] = user.nom_accom_con
+            data['nom_accom_con_file'] = user.nom_accom_con_file
+            data['ls1_details'] = user.ls1_details
+            data['ls1_file'] = user.ls1_file
+            data['ls2_details'] = user.ls2_details
+            data['ls2_file'] = user.ls2_file
+            data['resume'] = user.resume
+            data['additional_materials'] = user.additional_materials
+            data['add_file'] = user.add_file
+        else: 
+            user = Proposer.objects.get(app_id=app_id)
+            data = {}
+            award = user.award
+            data['appid'] = app_id
+            data['award'] = award
+
         response = render(request, 'forms/alaaforms.html', data)
         encoded = jwt.encode({"app_id": app_id}, jwt_key, algorithm="HS256")
         response.set_cookie(key='jwt', value=encoded)
@@ -148,7 +193,7 @@ def login (request):
                 if user.submitted == True:
                     response = redirect('print_pg')
                 else:
-                    response = render(request, 'forms/alaaforms.html', data)
+                    response = redirect('alaaform')
                 encoded = jwt.encode({"app_id": username}, jwt_key, algorithm="HS256")
                 response.set_cookie(key='jwt', value=encoded)
                 return response
@@ -278,7 +323,56 @@ def print_pg(request):
         data['additional_materials'] = user.additional_materials
         data['add_file'] = user.add_file
 
-    return render(request,'forms/print_page.html',data)
+        return render(request,'forms/print_page.html',data)
+    else:
+        app_id = request.POST['app_id']
+        user = Award_Form.objects.get(app_id=app_id)
+        data = {}
+        data['appid'] = user.app_id
+        data['award'] = user.award
+        data['name'] = user.name
+        data['gender'] = user.gender
+        data['profile_pic'] = user.profile_pic
+        data['father_name'] = user.father_name
+        data['rollno'] = user.rollno
+        data['dob'] = user.dob
+        data['age'] = user.age
+        data['degree'] = user.degree
+        data['dept'] = user.dept
+        data['yop'] = user.yop
+        data['specialization'] = user.specialization
+        data['mob'] = user.mob
+        data['email'] = user.email
+        data['address'] = user.address
+        data['ppo'] = user.ppo
+        data['distinctions'] = user.distinctions
+        data['distinctions_file'] = user.distinctions_file
+        data['higher_eduction'] = user.higher_eduction
+        data['professional_exp'] = user.professional_exp
+        data['prof_contri_papers'] = user.prof_contri_papers
+        data['prof_contri_papers_file'] = user.prof_contri_papers_file
+        data['prof_contri_patents'] = user.prof_contri_patents
+        data['prof_contri_patents_file'] = user.prof_contri_patents_file
+        data['prof_contri_membership'] = user.prof_contri_membership
+        data['prof_contri_membership_file'] = user.prof_contri_membership_file
+        data['prof_contri_books'] = user.prof_contri_books
+        data['prof_contri_books_file'] = user.prof_contri_books_file
+        data['prof_contri_others'] = user.prof_contri_others
+        data['prof_contri_others_file'] = user.prof_contri_others_file
+        data['prof_hon_award'] = user.prof_hon_award
+        data['prof_hon_award_file'] = user.prof_hon_award_file
+        data['nom_accom_con'] = user.nom_accom_con
+        data['nom_accom_con_file'] = user.nom_accom_con_file
+        data['ls1_details'] = user.ls1_details
+        data['ls1_file'] = user.ls1_file
+        data['ls2_details'] = user.ls2_details
+        data['ls2_file'] = user.ls2_file
+        data['resume'] = user.resume
+        data['additional_materials'] = user.additional_materials
+        data['add_file'] = user.add_file
+
+        return render(request,'forms/print_page.html',data)
+
 
 def download_file(request):
     try:
@@ -302,4 +396,15 @@ def logout(request):
     return response
 
 def fac_user(request):
-    return render(request,'forms/fac_user.html')
+    perm = Award_Form.objects.filter(submitted=True)
+    data = {}
+    data['det'] = []
+    for p in perm:
+        r = {}
+        r['app_id'] = p.app_id
+        prop = Proposer.objects.get(app_id=p.app_id)
+        r['prop_name'] = prop.name
+        r['award'] = p.award
+        r['nom_name'] = p.name
+        data['det'].append(r)
+    return render(request,'forms/fac_user.html', data)
