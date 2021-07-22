@@ -102,12 +102,6 @@ def alaaform(request):
             nominee.resume = request.FILES['resume']
         except:
             pass
-        try:
-            nominee.submitted = request.POST['submitted']
-            user.submitted = request.POST['submitted']
-            user.save()
-        except:
-            pass
         #if Award_Form.objects.filter(app_id=app_id).exists():
         nominee.save()
         return redirect('print_pg')
@@ -394,6 +388,18 @@ def logout(request):
     response = redirect('login')
     response.delete_cookie('jwt')
     return response
+
+def final_submition(request):
+    if request.method == 'POST':
+        app_id = request.POST['app_id']
+        nominee = Award_Form.objects.get(app_id=app_id)
+        nominee.submitted = True
+        user = Proposer.objects.get(app_id=app_id)
+        user.submitted = True
+        nominee.save()
+        user.save()
+        response = redirect('logout')
+        return response
 
 def fac_user(request):
     perm = Award_Form.objects.filter(submitted=True)

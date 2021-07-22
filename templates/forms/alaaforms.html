@@ -124,7 +124,7 @@
                                     <div class="col-sm-4"> <b>Name in Full (In Block Letters): </b> </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input for="name" class="form-control" type="text" name="name" value="{{generalData.full_name}}" placeholder="{{generalData.full_name}}">
+                                            <input for="name" class="form-control" type="text" name="name" value="{{name}}" placeholder="{{generalData.full_name}}">
                                         </div>
                                     </div>
                                 </div>
@@ -192,13 +192,43 @@
                             <div class="col-sm-3"> <b>Degree obtained from NITW</b> </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <input for="degree" class="form-control" type="text" name="degree" value="{{degree}}">
+                                      <select class="form-control" name="degree" id="postDropdown" value={{degree}}>
+                                        {% if degree %}
+                                          <option value="{{degree}}">{{degree}}</option>
+                                        {% else %}
+                                          <option disabled selected value> -- select an option -- </option>
+                                        {% endif %}
+                                        <option value="BTech">BTech</option>
+                                        <option value="MTech">MTech</option>
+                                        <option value="PhD">PhD</option>
+                                        <option value="MBA">MBA</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="MSc">MSc</option>
+                                      </select>
                                 </div>
                             </div>
                             <div class="col-sm-2"> <b>Department</b> </div>
                             <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input for="dept" class="form-control" type="text" name="dept" value="{{dept}}">
+                                    <select class="form-control" name="dept" id="postDropdown" value="{{dept}}">
+                                        {% if degree %}
+                                          <option value="{{dept}}">{{dept}}</option>
+                                        {% else %}
+                                          <option disabled selected value> -- select an option -- </option>
+                                        {% endif %}
+                                        <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                                        <option value="Bio-Technology">Bio-Technology</option>
+                                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                        <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                                        <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                                        <option value="Civil Engineering">Civil Engineering</option>
+                                        <option value="Chemical Engineering">Chemical Engineering</option>
+                                        <option value="Metallurgical and Materials Engineering">Metallurgical and Materials Engineering</option>
+                                        <option value="School of Management">School of Management</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Maths">Maths</option>
+                                      </select>
                                 </div>
                             </div>
                         </div>
@@ -473,8 +503,8 @@
                       <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input for="submitted" name="submitted" class="form-check-input" type="checkbox" value="True">
-                                <label for="submitted" class="form-check-label">After completing the form, check this box to submit</label>
+                                <!--<input for="submitted" name="submitted" class="form-check-input" type="checkbox" value="True">
+                                <label for="submitted" class="form-check-label">After completing the form, check this box to submit</label>-->
                             </div>
                         </div>
                         <div class="col-sm-2">

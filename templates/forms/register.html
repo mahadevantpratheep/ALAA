@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Award Registration Form</title>
+    <title>Alumni Award Registration Form</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -86,12 +86,34 @@ input[type=number]::-webkit-outer-spin-button {
                     </div>
                     <div class="form-group">
                         <label for="degree">Academic Degree from NITW:</label>
-                        <input for="degree" class="form-control" name="degree" required>
-                    </div>
-                    <div class="form-group">
+                        <select class="form-control" name="degree" id="postDropdown" required>
+                          <option disabled selected value> -- select an option -- </option>
+                          <option value="BTech">BTech</option>
+                          <option value="MTech">MTech</option>
+                          <option value="PhD">PhD</option>
+                          <option value="MBA">MBA</option>
+                          <option value="MCA">MCA</option>
+                          <option value="MSc">MSc</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
                         <label for="dept">Department:</label>
-                        <input for="dept" class="form-control" name="dept" required>
-                    </div>
+                        <select class="form-control" name="dept" id="postDropdown" required>
+                          <option disabled selected value> -- select an option -- </option>
+                          <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                          <option value="Bio-Technology">Bio-Technology</option>
+                          <option value="Mechanical Engineering">Mechanical Engineering</option>
+                          <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
+                          <option value="Electronics and Communication Engineering">Electronics and Communication Engineering</option>
+                          <option value="Civil Engineering">Civil Engineering</option>
+                          <option value="Chemical Engineering">Chemical Engineering</option>
+                          <option value="Metallurgical and Materials Engineering">Metallurgical and Materials Engineering</option>
+                          <option value="School of Management">School of Management</option>
+                          <option value="Physics">Physics</option>
+                          <option value="Chemistry">Chemistry</option>
+                          <option value="Maths">Maths</option>
+                        </select>
+                      </div>
                     <div class="form-group">
                         <label for="specialization">Specialization</label>
                         <input for="specialization" class="form-control" name="specialization" required>

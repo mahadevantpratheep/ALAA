@@ -106,10 +106,10 @@
         </center>
         <br>    
     </div>
-
+<br><br><br><br>
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1">
-		<form style="margin-top:3%;">
+		
 		{% csrf_token %}
 		<div class="row">
 			<center>
@@ -210,7 +210,7 @@
 			<table class="table table-bordered table-condensed">
                 <tr>
                     <td id="need_space">{{distinctions}}</td>
-                    <td>{% if distinctions_file %}<a href="http://127.0.0.1:8000/{{distinctions_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                    <td>{% if distinctions_file %}<a href="http://127.0.0.1:8000/{{distinctions_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
                 </tr>
 			</table>
 			<hr>
@@ -264,31 +264,31 @@
                      <td>1</td>
 					 <td id="need_space"><b>Number of Papers Published</b></td>
                      <td id="need_space">{{prof_contri_papers}}</td>
-                     <td>{% if prof_contri_papers_file %}<a href="http://127.0.0.1:8000/{{prof_contri_papers_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                     <td>{% if prof_contri_papers_file %}<a href="http://127.0.0.1:8000/{{prof_contri_papers_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>  
                     </tr>
                     <tr>    
                         <td>2</td>
                         <td id="need_space"><b>Number of Patents filed</b></td>
                         <td id="need_space">{{prof_contri_patents}}</td>
-                        <td>{% if prof_contri_patents_file %}<a href="http://127.0.0.1:8000/{{prof_contri_patents_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                        <td>{% if prof_contri_patents_file %}<a href="http://127.0.0.1:8000/{{prof_contri_patents_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>  
                     </tr> 
                     <tr>    
                         <td>3</td>
                         <td id="need_space"><b>Membership in Professional Bodies</b></td>
                         <td id="need_space">{{prof_contri_membership}}</td>
-                        <td>{% if prof_contri_membership_file %}<a href="http://127.0.0.1:8000/{{prof_contri_membership_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                        <td>{% if prof_contri_membership_file %}<a href="http://127.0.0.1:8000/{{prof_contri_membership_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>  
                     </tr> 
                     <tr>    
                         <td>4</td>
                         <td id="need_space"><b>Books Written</b></td>
                         <td id="need_space">{{prof_contri_books}}</td>
-                        <td>{% if prof_contri_books_file %}<a href="http://127.0.0.1:8000/{{prof_contri_books_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                        <td>{% if prof_contri_books_file %}<a href="http://127.0.0.1:8000/{{prof_contri_books_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>  
                     </tr> 
                     <tr>    
                         <td>5</td>
                         <td id="need_space"><b>Other Contribution</b></td>
                         <td id="need_space">{{prof_contri_others}}</td>
-                        <td>{% if prof_contri_others_file %}<a href="http://127.0.0.1:8000/{{prof_contri_others_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>  
+                        <td>{% if prof_contri_others_file %}<a href="http://127.0.0.1:8000/{{prof_contri_others_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>  
                     </tr> 
 				</tbody>
 			</table>
@@ -302,7 +302,7 @@
 			<table class="table table-bordered table-condensed">
                 <tr>
                     <td id="need_space">{{prof_hon_award}}</td>
-                    <td id="need_space">{% if prof_hon_award_file %}<a href="http://127.0.0.1:8000/{{prof_hon_award_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                    <td id="need_space">{% if prof_hon_award_file %}<a href="http://127.0.0.1:8000/{{prof_hon_award_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
                 </tr>
 			</table>
 		</div>
@@ -315,7 +315,7 @@
         <table class="table table-bordered table-condensed">
             <tr>
                 <td id="need_space">{{nom_accom_con}}</td>
-                <td id="need_space">{% if nom_accom_con_file %}<a href="http://127.0.0.1:8000/{{nom_accom_con_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                <td id="need_space">{% if nom_accom_con_file %}<a href="http://127.0.0.1:8000/{{nom_accom_con_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
             </tr>
         </table>
         <div class="row">
@@ -328,7 +328,7 @@
             <tr>
                 <td><b>Details</b></td>
                 <td id="need_space">{{ls1_details}}</td>
-                <td id="need_space">{% if ls1_file %}<a href="http://127.0.0.1:8000/{{ls1_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                <td id="need_space">{% if ls1_file %}<a href="http://127.0.0.1:8000/{{ls1_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
             </tr>
         </table>
 
@@ -342,7 +342,7 @@
             <tr>
                 <td><b>Details</b></td>
                 <td id="need_space">{{ls2_details}}</td>
-                <td id="need_space">{% if ls2_file %}<a href="http://127.0.0.1:8000/{{ls2_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                <td id="need_space">{% if ls2_file %}<a href="http://127.0.0.1:8000/{{ls2_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
             </tr>
         </table>
 
@@ -354,7 +354,7 @@
 
         <table class="table table-bordered table-condensed">
             <tr>
-                <td id="need_space">{% if resume %}<a href="http://127.0.0.1:8000/{{resume}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                <td id="need_space">{% if resume %}<a href="http://127.0.0.1:8000/{{resume}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
             </tr>
         </table>
 
@@ -367,20 +367,30 @@
         <table class="table table-bordered table-condensed">
             <tr>
                 <td id="need_space">{{additional_materials}}</td>
-                <td id="need_space">{% if add_file %}<a href="http://127.0.0.1:8000/{{add_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</td>
+                <td id="need_space">{% if add_file %}<a href="http://127.0.0.1:8000/{{add_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
             </tr>
         </table>
     
         <br><br><br><br>
 
-
+        <div class="row">
+			<div class="col-sm-6">
+				<h5 style="font-weight:900;">I <input class="form-check-input" type="checkbox"> declare (modification req)</h5>
+			</div>
+			<form action="{% url 'final_submition' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="app_id" value={{appid}}>
+				<input type="hidden" name="submitted" value="True">
+				<button type="submit" class="btn btn-success active">Submit</button></a>
+			</form>
+		</div>
 
 
 
     </div>
     
 </div>
-
+<br><br><br><br>
 <div class="copyright">
     <div style="text-align: center">Copyright &copy; NIT Warangal</div>
     <div style="text-align:center">Designed and Developed by WSDC</div>
