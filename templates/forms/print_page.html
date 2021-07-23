@@ -372,18 +372,21 @@
         </table>
     
         <br><br><br><br>
-
-        <div class="row">
-			<div class="col-sm-6">
-				<h5 style="font-weight:900;">I <input class="form-check-input" type="checkbox"> declare (modification req)</h5>
-			</div>
+			{% if submitted == false %}
 			<form action="{% url 'final_submition' %}" method="POST">
-				{% csrf_token %}
-				<input type="hidden" name="app_id" value={{appid}}>
-				<input type="hidden" name="submitted" value="True">
-				<button type="submit" class="btn btn-success active">Submit</button></a>
+				<div class="row">
+					<div class="col-sm-12">
+						<h5 style="font-weight:900;">I <input class="form-check-input" type="checkbox" required>know the nominee and his/her accomplishments and the information provided is true to the best of my knowledge. I certify that he/she has impeccable personal integrity and good character.</h5>
+					</div>
+				</div>
+				<div class="row">
+					{% csrf_token %}
+					<input type="hidden" name="app_id" value={{appid}}>
+					<input type="hidden" name="submitted" value="True">
+					<button type="submit" class="btn btn-success active">Submit</button></a>
+				</div>
 			</form>
-		</div>
+			{% endif %}
 
 
 

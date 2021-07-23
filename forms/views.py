@@ -157,6 +157,7 @@ def alaaform(request):
             data['resume'] = user.resume
             data['additional_materials'] = user.additional_materials
             data['add_file'] = user.add_file
+            data['submitted'] =user.submitted
         else: 
             user = Proposer.objects.get(app_id=app_id)
             data = {}
@@ -225,13 +226,13 @@ def register (request):
         password = "".join([random.choice(string.ascii_letters + string.digits) for i in range(8)])    
         #print(app_id, password)
         pass_hash = sha256(str.encode(password)).hexdigest()
-        print(request.POST)
         proposer = Proposer()
+        email = request.POST['email']
         proposer.app_id = app_id
         proposer.password = password
         proposer.name = request.POST['name']
-        proposer.email = request.POST['email']
         proposer.mob = request.POST['mob']
+        proposer.email = request.POST['email']
         try:
             proposer.alumini = request.POST['alumini']
         except:
@@ -253,11 +254,11 @@ def register (request):
 
         proposer.save()
 
-      #  user = User()
-       # user.username = app_id
-        #user.password = password
-      #  user.email = request.POST['email']
-      #  user.save()
+        #  user = User()
+        # user.username = app_id
+            #user.password = password
+        #  user.email = request.POST['email']
+        #  user.save()
 
         return redirect('login')
     else:
@@ -316,6 +317,7 @@ def print_pg(request):
         data['resume'] = user.resume
         data['additional_materials'] = user.additional_materials
         data['add_file'] = user.add_file
+        data['submitted'] =user.submitted
 
         return render(request,'forms/print_page.html',data)
     else:
@@ -364,6 +366,7 @@ def print_pg(request):
         data['resume'] = user.resume
         data['additional_materials'] = user.additional_materials
         data['add_file'] = user.add_file
+        data['submitted'] =user.submitted
 
         return render(request,'forms/print_page.html',data)
 
@@ -414,3 +417,6 @@ def fac_user(request):
         r['nom_name'] = p.name
         data['det'].append(r)
     return render(request,'forms/fac_user.html', data)
+
+def error_404 (request):
+    return render(request,'forms/404.html')

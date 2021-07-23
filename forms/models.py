@@ -13,7 +13,7 @@ class Proposer(models.Model):
     app_id =  models.IntegerField()
     password = models.CharField(max_length = 255)
     name = models.CharField(max_length = 63)
-    email = models.EmailField(unique = True)
+    email = models.EmailField()
     mob = models.CharField(max_length = 63)
     alumini = models.BooleanField(default = False)
     staff = models.BooleanField(default = False)
@@ -25,6 +25,8 @@ class Proposer(models.Model):
     award =  models.CharField(max_length = 255)
     address = models.TextField(max_length = 355)
     submitted = models.BooleanField(default = False)
+    ppo = models.CharField(max_length = 255, default = 'Alumni')
+
 
 class Award_Form(models.Model):
     app_id = models.IntegerField()
