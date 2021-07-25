@@ -8,6 +8,8 @@ from .models import ALAA_Form, IdCount, Proposer, Award_Form
 import datetime, random, string
 from hashlib import sha256
 import jwt, mimetypes
+from django.core.mail import send_mail
+
 # Create your views here.
 jwt_key = "ajsolasjfprapaphsgourhgo"
 
@@ -33,8 +35,14 @@ def alaaform(request):
         nominee.rollno = request.POST['rollno']
         nominee.dob = request.POST['dob']
         nominee.age = request.POST['age']
-        nominee.degree = request.POST['degree']
-        nominee.dept = request.POST['dept']
+        try:
+            nominee.degree = request.POST['degree']
+        except:
+            pass
+        try:
+            nominee.dept = request.POST['dept']
+        except:
+            pass
         nominee.yop = request.POST['yop']
         nominee.specialization = request.POST['specialization']
         nominee.mob = request.POST['mob']
@@ -232,7 +240,10 @@ def register (request):
         proposer.password = password
         proposer.name = request.POST['name']
         proposer.mob = request.POST['mob']
-        proposer.email = request.POST['email']
+        proposer.email = email
+        proposer.ppo = request.POST['ppo']
+        if Proposer.objects.filter(email = email).exists():
+            return redirect('error_404')
         try:
             proposer.alumini = request.POST['alumini']
         except:
@@ -251,16 +262,26 @@ def register (request):
         proposer.specialization = request.POST['specialization']
         proposer.award = request.POST['award']
         proposer.address = request.POST['address']
-
         proposer.save()
-
+        receiver = proposer.email
+        sender = "mp841824@student.nitw.ac.in"
+        content = "Your Application ID/Username is : " + proposer.app_id
+        content = content + "\n Your Password is : " + proposer.password
+        content = content + "\n Thanks for Registering."
+        content = content + "\n Please don't reply to this Mail-Id."
+        rlist = []
+        rlist.append(receiver)
+        #try:
+        #	send_mail('Application Id for Faculty Registration',content,sender,rlist,fail_silently=False,)
+        #except BadHeaderError:
+        #   return HttpResponse('Invalid header found.')
         #  user = User()
         # user.username = app_id
             #user.password = password
         #  user.email = request.POST['email']
         #  user.save()
 
-        return redirect('login')
+        return redirect('user_confirm')
     else:
         return render(request,'forms/register.html')
 
@@ -420,3 +441,6 @@ def fac_user(request):
 
 def error_404 (request):
     return render(request,'forms/404.html')
+
+def user_confirm (request):
+    return render(request,'forms/user_confirm.html')
