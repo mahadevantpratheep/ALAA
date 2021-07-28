@@ -3,7 +3,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'alaaform',
         'USER' : 'root',
-        'PASSWORD' : 'aaavooo',
+        'PASSWORD' : 'Acer@321',
         'HOST' : 'localhost',
         'PORT' : '3306',    
     }
