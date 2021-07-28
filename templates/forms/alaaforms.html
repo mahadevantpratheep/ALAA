@@ -74,8 +74,7 @@
                 <b>
                     <h3><u>Instructions to fill the form</u><br> (Kindly follow these for avoiding any inconvenience)</h3>
                     <ol>
-                        <li>Upload your picture first before proceeding to fill the form. <span class="label label-danger">Important</span></li>
-                        <li>After uploading the picture, you can proceed to fill the form.</li>
+                        <li>For Profile Picture only (.jpeg) file can be submitted and For rest of the files only (.pdf) can be submitted. <span class="label label-danger">Important</span></li>
                         <li>
                             Keep these points in mind while filling the form :
                             <ol>
@@ -289,7 +288,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof &ensp;{% if distinctions_file %}Currently: <a href="http://127.0.0.1:8000/{{distinctions_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b></div>
+                    <div class="col-sm-2"> <b>Proof &ensp;{% if distinctions_file %}Currently: <a href="{{distinctions_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b></div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="distinctions_file" class="form-control" type="file" name="distinctions_file" value="{{distinctions_file}}">
@@ -328,7 +327,7 @@
                                   <input for="prof_contri_papers" class="form-control" type="text" name="prof_contri_papers" value="{{prof_contri_papers}}">
                               </div>
                           </div>
-                          <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_papers_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_papers_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                          <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_papers_file %} Currently: <a href="{{prof_contri_papers_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_contri_papers_file" class="form-control" type="file" name="prof_contri_papers_file" value="{{generalData.pob}}">
@@ -344,7 +343,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_patents_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_patents_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_patents_file %} Currently: <a href="{{prof_contri_patents_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_contri_patents_file" class="form-control" type="file" name="prof_contri_patents_file" value="{{generalData.pob}}">
@@ -359,7 +358,7 @@
                             </div>
                         </div>
 
-                  <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_membership_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_membership_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                  <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_membership_file %} Currently: <a href="{{prof_contri_membership_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <input for="prof_contri_membership_file" class="form-control" type="file" name="prof_contri_membership_file" value="{{generalData.pob}}">
@@ -374,7 +373,7 @@
                           </div>
                       </div>
 
-                <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_books_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_books_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_books_file %} Currently: <a href="{{prof_contri_books_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                       <div class="col-sm-2">
                           <div class="form-group">
                               <input for="prof_contri_books_file" class="form-control" type="file" name="prof_contri_books_file" value="{{generalData.pob}}">
@@ -389,7 +388,7 @@
                         </div>
                     </div>
 
-              <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_others_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_contri_others_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+              <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_others_file %} Currently: <a href="{{prof_contri_others_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <input for="prof_contri_others_file" class="form-control" type="file" name="prof_contri_others_file" value="{{generalData.pob}}">
@@ -405,7 +404,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_hon_award_file %} Currently: <a href="http://127.0.0.1:8000/{{prof_hon_award_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_hon_award_file %} Currently: <a href="{{prof_hon_award_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_hon_award_file" class="form-control" type="file" name="prof_hon_award_file" value="{{generalData.pob}}">
@@ -421,7 +420,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined&ensp; {% if nom_accom_con_file %} Currently: <a href="http://127.0.0.1:8000/{{nom_accom_con_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %})</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined&ensp; {% if nom_accom_con_file %} Currently: <a href="{{nom_accom_con_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %})</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="nom_accom_con_file" class="form-control" type="file" name="nom_accom_con_file" value="{{generalData.pob}}">
@@ -441,7 +440,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Letter of Support (Upload)&ensp; {% if ls1_file %} Currently: <a href="http://127.0.0.1:8000/{{ls1_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>Letter of Support (Upload)&ensp; {% if ls1_file %} Currently: <a href="{{ls1_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="ls1_file" class="form-control" type="file" name="ls1_file" value="{{generalData.pob}}">
@@ -462,7 +461,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Letter of Support (Upload)&ensp; {% if ls2_file %} Currently: <a href="http://127.0.0.1:8000/{{ls2_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>Letter of Support (Upload)&ensp; {% if ls2_file %} Currently: <a href="{{ls2_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="ls2_file" class="form-control" type="file" name="ls2_file" value="{{generalData.pob}}">
@@ -472,7 +471,7 @@
                         <br>
                         <br>
                         <div class="row">
-                          <div class="col-sm-2"> <b>Enclose resume with the nomination form &ensp; {% if resume %} Currently: <a href="http://127.0.0.1:8000/{{resume}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                          <div class="col-sm-2"> <b>Enclose resume with the nomination form &ensp; {% if resume %} Currently: <a href="{{resume.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="resume" class="form-control" type="file" name="resume" value="{{generalData.pob}}">
@@ -489,7 +488,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if add_file %} Currently: <a href="http://127.0.0.1:8000/{{add_file}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if add_file %} Currently: <a href="{{add_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="add_file" class="form-control" type="file" name="add_file" value="{{generalData.pob}}">
