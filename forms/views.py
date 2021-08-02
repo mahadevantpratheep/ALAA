@@ -26,7 +26,10 @@ def alaaform(request):
         nominee.app_id = app_id
         nominee.award = user.award
         nominee.name = request.POST['name']
-        #nominee.gender = request.POST['gender']
+        try:
+            nominee.gender = request.POST['gender']
+        except:
+            pass
         try:
             nominee.profile_pic = request.FILES['profile_pic']
         except:

@@ -132,8 +132,8 @@
                                     <div class="col-sm-4"> <b>Gender</b> </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label class="radio-inline"><input type="radio" value="Male" name="gender" {% ifequal generalData.gender 'Male' %} checked {% endifequal %}>Male</label>
-                                            <label class="radio-inline"><input type="radio" value="Female" name="gender" {% ifequal generalData.gender 'Female' %} checked {% endifequal %}>Female</label>
+                                            <label class="radio-inline"><input type="radio" value="Male" name="gender" {% ifequal gender 'Male' %} checked {% endifequal %}>Male</label>
+                                            <label class="radio-inline"><input type="radio" value="Female" name="gender" {% ifequal gender 'Female' %} checked {% endifequal %}>Female</label>
                                         </div>
                                     </div>
                                 </div>
@@ -309,7 +309,7 @@
                       </div>
                       <br>
                       <div class="row">
-                          <div class="col-sm-3"> <b>Professional Experiences(Designation,Organisation,Duration)</b> </div>
+                          <div class="col-sm-3"> <b>Latest Four Professional Experiences(Designation,Organisation,Duration)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
                                   <textarea for="professional_exp" class="form-control" type="text" name="professional_exp" rows="4">{{professional_exp}}</textarea>
