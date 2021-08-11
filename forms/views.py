@@ -274,11 +274,11 @@ def register (request):
         content = content + "\n Please don't reply to this Mail-Id."
         rlist = []
         rlist.append(receiver)
-        #try:
-        #	send_mail('Application Id for Faculty Registration',content,sender,rlist,fail_silently=False,)
-        #except BadHeaderError:
-        #   return HttpResponse('Invalid header found.')
-        #  user = User()
+        try:
+        	send_mail('Application Id for Faculty Registration',content,sender,rlist,fail_silently=False,)
+        except BadHeaderError:
+           return HttpResponse('Invalid header found.')
+         # user = User()
         # user.username = app_id
             #user.password = password
         #  user.email = request.POST['email']
