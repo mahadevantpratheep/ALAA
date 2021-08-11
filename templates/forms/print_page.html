@@ -180,7 +180,7 @@
 				<td>{{specialization}}</td>
 			</tr>
 			<tr>
-				<td><b>Phone Number</b></td>
+				<td><b>Mobile Number</b></td>
 				<td id="need_space">{{mob}}</td>
 				<td><b>Email-ID</b></td>
 				<td id="need_space">{{email}}</td>
@@ -228,7 +228,7 @@
 
             <div class="row">
 				<div class="col-sm-10">
-					<h5><b>Professional Experiences(Designation,Organisation,Duration)</b></h5>
+					<h5><b>Latest Four Professional Experiences(Designation,Organisation,Duration)</b></h5>
 				</div>
 			</div>
 
@@ -306,6 +306,20 @@
                 </tr>
 			</table>
 		</div>
+		{% if not award == "Alumnus Lifetime Achievement Award"%}
+		<div class="row">
+			<div class="col-sm-10">
+				<h5><b>Impact of your nominee on a local, regional, national, and/or international level.:</b></h5>
+			</div>
+		</div>
+
+		<table class="table table-bordered table-condensed">
+			<tr>
+				<td id="need_space">{{impact}}</td>
+				<td id="need_space">{% if impact_file %}<a href="{{impact_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% else %}<button class="btn btn-danger">No File</button>{% endif %}</td>
+			</tr>
+		</table>
+		{% endif %}
         <div class="row">
             <div class="col-sm-10">
                 <h5><b>Nominee's accomplishments for consideration to the award, for which he/she is nominated</b></h5>
@@ -383,12 +397,23 @@
 					{% csrf_token %}
 					<input type="hidden" name="app_id" value={{appid}}>
 					<input type="hidden" name="submitted" value="True">
-					<button type="submit" class="btn btn-success active">Submit</button></a>
+					<center><button type="submit" class="btn btn-success active">Submit</button></a></center>
 				</div>
 			</form>
 			{% endif %}
-
-
+			<br><br><br>
+			<div class="row">
+				{% if submitted == 0 %}
+				<div class="col-sm-2">
+					<form>
+						<button class="btn btn-primary active" formaction="{% url 'alaaform' %}">Back</button>
+					  </form>
+				</div>
+				{% endif %}
+				<div class="col-sm-12">
+					<center><input type="button" class="btn btn-primary active"value="Print this page" onClick="window.print()"></center>
+				</div>
+			</div>
 
     </div>
     

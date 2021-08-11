@@ -248,7 +248,7 @@
                             </div>
                         </div>
                         <div class="row">
-                          <div class="col-sm-3"> <b>Phone Number</b> </div>
+                          <div class="col-sm-3"> <b>Mobile Number</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
                                   <input for="mob" class="form-control" type="text" name="mob" value="{{mob}}">
@@ -304,6 +304,11 @@
                           <div class="col-sm-3">
                               <div class="form-group">
                                   <textarea for="higher_eduction" class="form-control" type="text" name="higher_eduction" rows="4">{{higher_eduction}}</textarea>
+                                 <!-- <input for="higher_eduction" class="form-control" type="text" name="higher_eduction" value="{{higher_eduction}}">
+                                    <button onclick="add()">Add</button>
+                                    <button onclick="remove()">remove</button>
+                                    <div id="new_chq"></div>
+                                    <input for="higher_eduction" class="form-control" type="text" name="higher_eduction" value="{{higher_eduction}}">-->      
                               </div>
                           </div>
                       </div>
@@ -327,7 +332,7 @@
                                   <input for="prof_contri_papers" class="form-control" type="text" name="prof_contri_papers" value="{{prof_contri_papers}}">
                               </div>
                           </div>
-                          <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_papers_file %} Currently: <a href="{{prof_contri_papers_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                          <div class="col-sm-2"> <b>List Upload (combined) &ensp; {% if prof_contri_papers_file %} Currently: <a href="{{prof_contri_papers_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_contri_papers_file" class="form-control" type="file" name="prof_contri_papers_file" value="{{generalData.pob}}">
@@ -343,7 +348,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_patents_file %} Currently: <a href="{{prof_contri_patents_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>List Upload (combined) &ensp; {% if prof_contri_patents_file %} Currently: <a href="{{prof_contri_patents_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_contri_patents_file" class="form-control" type="file" name="prof_contri_patents_file" value="{{generalData.pob}}">
@@ -358,7 +363,7 @@
                             </div>
                         </div>
 
-                  <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_membership_file %} Currently: <a href="{{prof_contri_membership_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                  <div class="col-sm-2"> <b>List Upload (combined)&ensp; {% if prof_contri_membership_file %} Currently: <a href="{{prof_contri_membership_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <input for="prof_contri_membership_file" class="form-control" type="file" name="prof_contri_membership_file" value="{{generalData.pob}}">
@@ -373,7 +378,7 @@
                           </div>
                       </div>
 
-                <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_contri_books_file %} Currently: <a href="{{prof_contri_books_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                <div class="col-sm-2"> <b>List Upload (combined) &ensp; {% if prof_contri_books_file %} Currently: <a href="{{prof_contri_books_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                       <div class="col-sm-2">
                           <div class="form-group">
                               <input for="prof_contri_books_file" class="form-control" type="file" name="prof_contri_books_file" value="{{generalData.pob}}">
@@ -388,7 +393,7 @@
                         </div>
                     </div>
 
-              <div class="col-sm-2"> <b>Proof(combined)&ensp; {% if prof_contri_others_file %} Currently: <a href="{{prof_contri_others_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+              <div class="col-sm-2"> <b>List Upload (combined)&ensp; {% if prof_contri_others_file %} Currently: <a href="{{prof_contri_others_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                     <div class="col-sm-2">
                         <div class="form-group">
                             <input for="prof_contri_others_file" class="form-control" type="file" name="prof_contri_others_file" value="{{generalData.pob}}">
@@ -404,7 +409,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined) &ensp; {% if prof_hon_award_file %} Currently: <a href="{{prof_hon_award_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                    <div class="col-sm-2"> <b>Proof (combined) &ensp; {% if prof_hon_award_file %} Currently: <a href="{{prof_hon_award_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="prof_hon_award_file" class="form-control" type="file" name="prof_hon_award_file" value="{{generalData.pob}}">
@@ -412,6 +417,24 @@
                           </div>
                         </div>
                         <br>
+                        {% if not award == "Alumnus Lifetime Achievement Award"%}
+                        <div class="row">
+                            <div class="col-sm-3"> <b>Please describe the impact of your nominee on a local, regional, national, and/or international level.</b> </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <textarea for="impact" class="form-control" type="text" name="impact" rows="4">{{impact}}</textarea>
+                                </div>
+                            </div>
+  
+                      <div class="col-sm-2"> <b>Proof (combined) &ensp; {% if impact_file %} Currently: <a href="{{impact_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <input for="impact_file" class="form-control" type="file" name="impact_file" value="{{generalData.pob}}">
+                                </div>
+                            </div>
+                          </div>
+                          <br>
+                          {% endif %}
                         <div class="row">
                           <div class="col-sm-3"> <b>List the nominee's accomplishments for consideration to the award, for which he/she is nominated</b> </div>
                           <div class="col-sm-3">
@@ -420,7 +443,7 @@
                               </div>
                           </div>
 
-                    <div class="col-sm-2"> <b>Proof(combined&ensp; {% if nom_accom_con_file %} Currently: <a href="{{nom_accom_con_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %})</b> </div>
+                    <div class="col-sm-2"> <b>Proof (combined)&ensp; {% if nom_accom_con_file %} Currently: <a href="{{nom_accom_con_file.url}}"name="file"><button type="button" class="btn btn-success active">File</button></a>{% endif %}</b> </div>
                           <div class="col-sm-2">
                               <div class="form-group">
                                   <input for="nom_accom_con_file" class="form-control" type="file" name="nom_accom_con_file" value="{{generalData.pob}}">
@@ -433,7 +456,7 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="col-sm-3"> <b>Details of Recommender(Name,Designation,Organisation,Phone Number,Email-ID)</b> </div>
+                          <div class="col-sm-3"> <b>Details of Recommender(Name,Designation,Organisation,Mobile Number,Email-ID)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
                                   <textarea for="ls1_details" class="form-control" type="text" name="ls1_details" rows="4">{{ls1_details}}</textarea>
@@ -454,7 +477,7 @@
                         </div>
                         <br>
                         <div class="row">
-                          <div class="col-sm-3"> <b>Details of Recommender(Name,Designation,Organisation,Phone Number,Email-ID)</b> </div>
+                          <div class="col-sm-3"> <b>Details of Recommender(Name,Designation,Organisation,Mobile Number,Email-ID)</b> </div>
                           <div class="col-sm-3">
                               <div class="form-group">
                                   <textarea for="ls2_details" class="form-control" type="text" name="ls2_details" rows="4">{{ls2_details}}</textarea>
@@ -550,5 +573,29 @@
 </style>
 
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button"><img src="remove-icon.png"/></a></div>'; //New input field html 
+    var x = 1; //Initial field counter is 1
+    
+    //Once add button is clicked
+    $(addButton).click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){ 
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }
+    });
+    
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
+});
+</script>
 </html>
