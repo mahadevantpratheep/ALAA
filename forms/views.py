@@ -89,6 +89,11 @@ def alaaform(request):
             nominee.prof_hon_award_file = request.FILES['prof_hon_award_file']
         except:
             pass
+        nominee.impact = request.POST['impact']
+        try:
+            nominee.impact_file = request.FILES['impact_file']
+        except:
+            pass
         nominee.nom_accom_con = request.POST['nom_accom_con']
         try:
             nominee.nom_accom_con_file = request.FILES['nom_accom_con_file']
@@ -159,6 +164,8 @@ def alaaform(request):
             data['prof_contri_others_file'] = user.prof_contri_others_file
             data['prof_hon_award'] = user.prof_hon_award
             data['prof_hon_award_file'] = user.prof_hon_award_file
+            data['impact'] = user.impact
+            data['impact_file'] = user.impact_file
             data['nom_accom_con'] = user.nom_accom_con
             data['nom_accom_con_file'] = user.nom_accom_con_file
             data['ls1_details'] = user.ls1_details
@@ -220,7 +227,7 @@ def login (request):
 def register (request):
     if request.method == 'POST':
         #App ID generating
-        award_dict = {"For Senior Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)":1 , "For Senior Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)": 2, "For Senior Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)":3, "For Young Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)":4, "For Young Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)":5, "For Young Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASI)":6, "Alumnus Lifetime Achievement Award":7}
+        award_dict = {"For Senior Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)":1 , "For Senior Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)": 2, "For Senior Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASN)":3, "For Young Alumnus: Distinguished Alumnus Award for Professional Excellence (DAAPE)":4, "For Young Alumnus: Distinguished Alumnus Award for Public Service (DAAPS)":5, "For Young Alumnus: Distinguished Alumnus Award for Service to the NITW/RECW (DAASN)":6, "Alumnus Lifetime Achievement Award":7}
         award = request.POST['award']
         award_id = award_dict[award]
         year = str(datetime.datetime.now().year)
@@ -275,10 +282,10 @@ def register (request):
         rlist = []
         rlist.append(receiver)
         try:
-        	send_mail('Application Id for Faculty Registration',content,sender,rlist,fail_silently=False,)
+        	send_mail('Application Id for Alumnus Achievement Award || NIT Warangal',content,sender,rlist,fail_silently=False,)
         except BadHeaderError:
-           return HttpResponse('Invalid header found.')
-         # user = User()
+          return HttpResponse('Invalid header found.')
+        #  user = User()
         # user.username = app_id
             #user.password = password
         #  user.email = request.POST['email']
@@ -332,6 +339,8 @@ def print_pg(request):
         data['prof_contri_others_file'] = user.prof_contri_others_file
         data['prof_hon_award'] = user.prof_hon_award
         data['prof_hon_award_file'] = user.prof_hon_award_file
+        data['impact'] = user.impact
+        data['impact_file'] = user.impact_file
         data['nom_accom_con'] = user.nom_accom_con
         data['nom_accom_con_file'] = user.nom_accom_con_file
         data['ls1_details'] = user.ls1_details
@@ -381,6 +390,8 @@ def print_pg(request):
         data['prof_contri_others_file'] = user.prof_contri_others_file
         data['prof_hon_award'] = user.prof_hon_award
         data['prof_hon_award_file'] = user.prof_hon_award_file
+        data['impact'] = user.impact
+        data['impact_file'] = user.impact_file
         data['nom_accom_con'] = user.nom_accom_con
         data['nom_accom_con_file'] = user.nom_accom_con_file
         data['ls1_details'] = user.ls1_details
