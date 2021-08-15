@@ -89,7 +89,10 @@ def alaaform(request):
             nominee.prof_hon_award_file = request.FILES['prof_hon_award_file']
         except:
             pass
-        nominee.impact = request.POST['impact']
+        try:
+            nominee.impact = request.POST['impact']
+        except:
+            pass
         try:
             nominee.impact_file = request.FILES['impact_file']
         except:
