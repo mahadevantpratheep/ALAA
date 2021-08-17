@@ -118,7 +118,7 @@ def alaaform(request):
             pass
         nominee.additional_materials = request.POST['additional_materials']
         try:
-            nominee.resume = request.FILES['resume']
+            nominee.add_file = request.FILES['add_file']
         except:
             pass
         #if Award_Form.objects.filter(app_id=app_id).exists():
