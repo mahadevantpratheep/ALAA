@@ -72,7 +72,7 @@ class Award_Form(models.Model):
     ls2_file = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
     resume = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
     additional_materials = models.TextField(blank=True)
-    add_file = models.FileField(upload_to=add_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
+    add_file = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
     submitted = models.BooleanField(default=False)
     
     def __unicode__(self):
