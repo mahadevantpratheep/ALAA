@@ -58,7 +58,7 @@ class Award_Form(models.Model):
     prof_contri_membership_file = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
     prof_contri_books = models.CharField(max_length=10)
     prof_contri_books_file = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
-    prof_contri_others = models.CharField(max_length=10)
+    prof_contri_others = models.TextField(blank=True)
     prof_contri_others_file = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
     prof_hon_award = models.TextField(blank=True)
     prof_hon_award_file = models.FileField(upload_to=get_file_path, validators=[FileExtensionValidator(["pdf"])], null=True, blank=True)
