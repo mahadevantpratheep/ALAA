@@ -1,6 +1,5 @@
 Nominee/*
 venv/*
 alaa/Confidential.py
-alaa/__pycache__/*
-forms/__pycache__/*
-forms/migrations/*
+forms/_pycache_/*
+forms/migrations

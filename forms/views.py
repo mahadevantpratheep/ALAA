@@ -198,10 +198,8 @@ def login (request):
         username = request.POST['username']
         password = request.POST['password']
 
-        if (username == '8210000') and (password == 'daa@nitw'):
-            return redirect('fac_user')
-
         if Proposer.objects.filter(app_id=username).exists():
+            print("hello")
             user = Proposer.objects.get(app_id=username)
             if user.password == password:
                 data = {}
@@ -310,7 +308,6 @@ def print_pg(request):
             return redirect("login")
         app_id = jt['app_id']         
         user = Award_Form.objects.get(app_id=app_id)
-        prop = Proposer.objects.get(app_id=app_id)
         data = {}
         data['appid'] = user.app_id
         data['award'] = user.award
@@ -362,7 +359,6 @@ def print_pg(request):
     else:
         app_id = request.POST['app_id']
         user = Award_Form.objects.get(app_id=app_id)
-        prop = Proposer.objects.get(app_id=app_id)
         data = {}
         data['appid'] = user.app_id
         data['award'] = user.award
